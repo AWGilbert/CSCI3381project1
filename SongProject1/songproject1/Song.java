@@ -95,7 +95,7 @@ public class Song
 			}
 		}
 		
-		return toReturn;
+		return toReturn + ", ";
 	}
 	
 	//return the track id
@@ -144,6 +144,12 @@ public class Song
 	public boolean compare(Song rhs)
 	{
 		return track_id.equals(rhs.getTrackId());
+	}
+	
+	//String representation of a Song
+	public String toString() 
+	{
+		return track_id + ", " + artist_name + genreToString() + track_title + ", " + album_title + ", " + year_created + ", " + artist_longitude;
 	}
 	
 }
