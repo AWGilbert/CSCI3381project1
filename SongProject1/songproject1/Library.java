@@ -25,17 +25,10 @@ public class Library
 		
 	}
 
-	private void readFile() {
-		BufferedReader lineReader = null;
-		try {
-			FileReader fr = new FileReader(filename);
-			lineReader = new BufferedReader(fr);
-			String line = null;
-			while((line = lineReader.readLine())!=null)
-			{
-				String[] tokens = line.split(";");
-				Song temp = new Song(tokens[0], tokens[1], tokens[2],)
-			}
+	private void readFile() 
+	{
+		
+			
 	}
 
 }

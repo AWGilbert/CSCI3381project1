@@ -41,6 +41,12 @@ public class Tester
 		//test the compare method of the track id's
 		System.out.println("\nSong 1 equals Song 2: " + test1.compare(test2) + " [expect false] \n");
 		
+		
+		//Test the library class
+		//Test the constructor
+		Library library = new Library(FILE);
+		
+		
 	}
 
 }
