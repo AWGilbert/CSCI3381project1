@@ -3,155 +3,141 @@
 //Definition of Song object for the song's creation and modifying
 package songproject1;
 
-import java.util.ArrayList;
-
 public class Song 
 {
-	private String track_id;			//6-digit id
-	private String artist_name;			
-	private ArrayList<String> genre;
-	private String track_title;
-	private String album_title;
-	private String year_created;
-	private String artist_longitude;
+	// Private data fields for Song object
+	private int id;
+	private String artist;
+	private String genre;
+	private String name;
+	private String album;
+	private int year;
+	private double longitude;
 	
-	
-	//default constructor
-	public Song() 
+	// Default Constructor
+	public Song () 
 	{
-		track_id = "000000";
-		artist_name = "Not Known";
-		genre = new ArrayList<String>();
-		track_title = "Not Known";
-		album_title = "Not Known";
-		year_created = "Not Known";
-		artist_longitude = "Not Known";
+		id = -1;
+		artist = "No Artist Set";
+		genre = "No Genre Set";
+		name = "No Name Set";
+		album = "No Album Set";
+		year = -1;
+		longitude = -1.0;
 	}
 	
-	//overloaded constructor
-	public Song(String track_id, String artist_name, String track_title, String album_title, String year_created, String artist_longitude) 
+	// Constructor w/ ID
+	public Song (int id) 
 	{
-		this.track_id = track_id;
-		this.artist_name = artist_name;
-		this.genre = new ArrayList<String>();
-		this.track_title = track_title;
-		this.album_title = album_title;
-		this.year_created = year_created;
-		this.artist_longitude = artist_longitude;
+		this.id = id;
+		artist = "No Artist Set";
+		genre = "No Genre Set";
+		name = "No Name Set";
+		album = "No Album Set";
+		year = -1;
+		longitude = -1.0;
 	}
 	
-	//set the track id
-	public void setTrackId(String track_id) 
+	// Constructor w/ All Values
+	public Song (int id, String artist, String genre, String name, String album, int year, double longitude) 
 	{
-		this.track_id = track_id;
+		this.id = id;
+		this.artist = artist;
+		this.genre = genre;
+		this.name = name;
+		this.album = album;
+		this.year = year;
+		this.longitude = longitude;
 	}
 	
-	//set the artist name
-	public void setArtistName(String artist_name) 
+	// Getters
+	public int getID() 
 	{
-		this.artist_name = artist_name;
+		return id;
 	}
 	
-	//add the genre to the list
-	public void addGenre(String genre)
+	public String getArtist() 
 	{
-		if(!this.genre.contains(genre)) 
-		{
-			this.genre.add(genre);
-		}
+		return artist;
 	}
 	
-	//set the track title
-	public void setTrackTitle(String track_title)
-	{
-		this.track_title = track_title;
-	}
-	
-	//set the album title
-	public void setAlbumTitle(String album_title) 
-	{
-		this.album_title = album_title;
-	}
-	
-	//set the year the song was created
-	public void setYearCreated(String year_created) 
-	{
-		this.year_created = year_created;
-	}
-	
-	//set the artist longitude
-	public void setArtistLongitude(String artist_longitude) 
-	{
-		this.artist_longitude = artist_longitude;
-	}
-	
-	//string representation of the genre array
-	public String genreToString() 
-	{
-		String toReturn = new String();
-		if(genre.size() > 0) 
-		{
-			for (int i = 0; i < genre.size(); i++) 
-			{
-				toReturn+= ", " + genre.get(i);
-			}
-		}
-		
-		return toReturn + ", ";
-	}
-	
-	//return the track id
-	public String getTrackId() 
-	{
-		return track_id;
-	}
-
-	//return the artist name
-	public String getArtistName() 
-	{
-		return artist_name;
-	}
-	
-	//return the genre of the song
-	public ArrayList<String> getGenre()
+	public String getGenre() 
 	{
 		return genre;
 	}
 	
-	//return track title, album title, year created, artist longitude
-	public String getTrackTitle() 
+	public String getName() 
 	{
-		return track_title;
+		return name;
 	}
 	
-	//return album title
-	public String getAlbumTitle()
+	public String getAlbum() 
 	{
-		return album_title;
+		return album;
 	}
 	
-	//return the year the song was created
-	public String getYearCreated() 
+	public int getYear() 
 	{
-		return year_created;
+		return year;
 	}
 	
-	//return the artist longitude
-	public String getArtistLongitude()
+	public double getLongitude() 
 	{
-		return artist_longitude;
+		return longitude;
+	}
+
+	
+	// Setters
+	public void setID(int id) 
+	{
+		this.id = id;
 	}
 	
-	//to compare two songs track_id's and see if they are the same
-	public boolean compare(Song rhs)
+	public void setArtist(String artist) 
 	{
-		return track_id.equals(rhs.getTrackId());
+		this.artist = artist;
 	}
 	
-	//String representation of a Song
+	public void setGenre(String genre) 
+	{
+		this.genre = genre;
+	}
+	
+	public void setName(String name) 
+	{
+		this.name = name;
+	}
+	
+	public void setAlbum(String album) 
+	{
+		this.album = album;
+	}
+	
+	public void setYear(int year) 
+	{
+		this.year = year;
+	}
+	
+	public void setLongitude(double longitude) 
+	{
+		this.longitude = longitude;
+	}
+	
+	
+	// ToString method to allow printing/displaying this Song object.
 	public String toString() 
 	{
-		return track_id + ", " + artist_name + genreToString() + track_title + ", " + album_title + ", " + year_created + ", " + artist_longitude;
+		String toReturn = "";
+		toReturn += id + "," + artist.toString() + "," + genre.toString() + ","
+		+ name.toString() + "," + album.toString() + "," + year + "," + longitude;
+		return toReturn;
 	}
 	
+	// Equals method to test for equality between two Songs.
+	public boolean equals (Song rhs)
+	{
+		if (rhs.id == this.id)
+			return true;
+		return false;
+	}
 }
